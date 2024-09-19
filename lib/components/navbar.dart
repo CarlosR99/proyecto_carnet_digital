@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_carnet_digital/screens/config.dart';
+import 'package:proyecto_carnet_digital/screens/home.dart';
+import 'package:proyecto_carnet_digital/screens/info.dart';
+import 'package:proyecto_carnet_digital/screens/help.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        children: const [
-          UserAccountsDrawerHeader(
+        children: [
+          const UserAccountsDrawerHeader(
             accountName: Text('Juanito Perez'),
             accountEmail: Text('juanito@correo.com'),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image(
-                  image: NetworkImage(
-                      'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'),
+                  image: NetworkImage('https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg'),
                 ),
               ),
             ),
@@ -24,27 +27,50 @@ class NavBar extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: Text('Inicio'),
-            leading: Icon(Icons.home),
+            title:const Text('Inicio'),
+            leading:const Icon(Icons.home),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => InicioPage()),
+              );
+            },
           ),
           ListTile(
-            title: Text('Ajustes'),
-            leading: Icon(Icons.settings),
-
+            title:const Text('Ajustes'),
+            leading:const Icon(Icons.settings),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AjustesPage()),
+              );
+            },
           ),
           ListTile(
-            title: Text('Ayuda y soporte'),
-            leading: Icon(Icons.help),
-
+            title:const Text('Ayuda y soporte'),
+            leading:const Icon(Icons.help),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AyudaSoportePage()),
+              );
+            },
           ),
           ListTile(
-            title: Text('Acerca de'),
-            leading: Icon(Icons.info),
-            
+            title:const Text('Acerca de'),
+            leading:const Icon(Icons.info),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AcercaDePage()),
+              );
+            },
           ),
           ListTile(
-            title: Text('Cerrar sesión'),
-            leading: Icon(Icons.exit_to_app),
+            title:const Text('Cerrar sesión'),
+            leading:const Icon(Icons.exit_to_app),
+            onTap: () {
+            },
           ),
         ],
       ),
