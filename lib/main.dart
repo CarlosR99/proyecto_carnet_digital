@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_carnet_digital/screens/login_page_screen.dart';
+import 'package:proyecto_carnet_digital/themes/app_theme.dart';
 import 'package:proyecto_carnet_digital/screens/recuperar_contra_screen.dart';
 import 'package:proyecto_carnet_digital/theme/theme.dart';
 
@@ -13,8 +15,8 @@ class RecuperarContrasenaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme, // Aplica el tema correctamente
-      home: const RecuperarContrasenaScreen(),
+      theme: AppTheme.lightTheme, // Aplica el tema global
+      home: const LoginPage(),
     );
   }
 }
