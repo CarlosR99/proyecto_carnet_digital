@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
-import 'package:proyecto_carnet_digital/widget/circles_widget.dart'; // Importa el widget del formulari
-import 'package:proyecto_carnet_digital/widget/login_form_widget.dart'; // Importa el widget del formulari
-
+import 'package:proyecto_carnet_digital/src/widget/circles_widget.dart'; // Importa el widget del formulari
+import 'package:proyecto_carnet_digital/src/widget/login_form_widget.dart'; // Importa el widget del formulari
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

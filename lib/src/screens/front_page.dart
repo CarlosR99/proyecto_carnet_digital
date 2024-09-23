@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart'; // Asegúrate de tener esta dependencia en tu archivo pubspec.yaml
+import 'package:google_fonts/google_fonts.dart'; // Asegúrate de tener esta
+//dependencia en tu archivo pubspec.yaml
 
 class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +90,7 @@ class WelcomeScreen extends StatelessWidget {
                       // Botón más rectangular con flecha
                       ElevatedButton(
                         onPressed: () {
-                          // Agrega la funcionalidad de navegación aquí
+                          Navigator.pushNamed(context, '/login');
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
@@ -116,7 +119,7 @@ class WelcomeScreen extends StatelessWidget {
 }
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: WelcomeScreen(),
   ));
 }

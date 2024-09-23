@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_carnet_digital/widgets/circulos_decorations.dart';
+import 'package:proyecto_carnet_digital/src/widgets/circulos_decorations.dart';
 // Importamos los círculos
 
 class RecuperarContrasenaScreen extends StatelessWidget {
@@ -21,9 +21,8 @@ class RecuperarContrasenaScreen extends StatelessWidget {
                 children: [
                   Text(
                     '¿Tienes problemas para entrar?',
-                    
+
                     style: Theme.of(context).textTheme.titleLarge,
-                    
 
                     // Uso de tema
                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_carnet_digital/src/util/finger_print.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -64,8 +65,12 @@ class LoginForm extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        const Center(
-          child: Text(
+        // Funcionalidad para volver un texto clickeable
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, '/recuperar');
+          },
+          child: const Text(
             '¿Has olvidado la contraseña?',
             style: TextStyle(
               fontFamily: 'Roboto',
@@ -75,27 +80,55 @@ class LoginForm extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 20),
-        // Botón Ingresar
-        ElevatedButton(
-          onPressed: () {
-            // Lógica de inicio de sesión
-          },
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center, // Centra verticalmente
+          children: [
+            // Botón Ingresar
+            ElevatedButton(
+              onPressed: () {
+                // Lógica de inicio de sesión
+              },
+              style: ElevatedButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                backgroundColor: const Color.fromARGB(234, 9, 9, 231),
+              ),
+              child: const Text(
+                'Ingresar',
+                style: TextStyle(
+                  fontFamily: 'Roboto',
+                  fontSize: 18,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
+              ),
             ),
-            backgroundColor: const Color.fromARGB(234, 9, 9, 231),
-          ),
-          child: const Text(
-            'Ingresar',
-            style: TextStyle(
-              fontFamily: 'Roboto',
-              fontSize: 18,
-              color: Color.fromARGB(255, 255, 255, 255),
+            // Botón de huella
+            const SizedBox(width: 20),
+            ElevatedButton.icon(
+              onPressed: () {
+                FingerprintService().authenticate(context);
+              },
+              icon: const Icon(Icons.fingerprint),
+              label: const Text('Huella',
+                  style: TextStyle(
+                    fontFamily: 'Roboto',
+                    fontSize: 18,
+                    color: Color.fromARGB(234, 9, 9, 231),
+                  )),
+              style: ElevatedButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                backgroundColor: const Color.fromARGB(0, 9, 9, 231),
+              ),
             ),
-          ),
-        ),
+          ],
+        )
       ],
     );
   }
