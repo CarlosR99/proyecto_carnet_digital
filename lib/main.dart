@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/digital_license_screen.dart'; // Importa tu archivo donde guardaste el código
+import 'package:proyecto_carnet_digital/src/util/screens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +11,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Digital License App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home:
-          const DigitalLicenseScreen(), // Utiliza el widget en la pantalla principal
+      debugShowCheckedModeBanner: false,
+      //theme: AppTheme.lightTheme, // Aplica el tema global
+      initialRoute: '/Home',
+      routes: {
+        '/Home': (_) => const WelcomeScreen(),
+        '/login': (_) => const LoginPage(),
+        '/recuperar': (_) => const RecuperarContrasenaScreen(),
+      },
     );
   }
 }
