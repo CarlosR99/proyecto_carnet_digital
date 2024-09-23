@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'src/views/face_verification_view.dart';
+import 'package:proyecto_carnet_digital/src/util/screens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,11 +12,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Face Verification',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const FaceVerificationView(),
+      //theme: AppTheme.lightTheme, // Aplica el tema global
+      initialRoute: '/Home',
+      routes: {
+        '/Home': (_) => const WelcomeScreen(),
+        '/login': (_) => const LoginPage(),
+        '/recuperar': (_) => const RecuperarContrasenaScreen(),
+      },
     );
   }
 }
