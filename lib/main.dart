@@ -1,33 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_carnet_digital/components/navbar.dart';
+import 'package:proyecto_carnet_digital/src/util/screens.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-
-class _MyAppState extends State<MyApp>{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
-      home: Scaffold(
-        drawer: NavBar(),
-        appBar: AppBar(
-          title: const Text('My App'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      //theme: AppTheme.lightTheme, // Aplica el tema global
+      initialRoute: '/Home',
+      routes: {
+        '/Home': (_) => const WelcomeScreen(),
+        '/login': (_) => const LoginPage(),
+        '/recuperar': (_) => const RecuperarContrasenaScreen(),
+      },
     );
   }
 }
