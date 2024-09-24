@@ -43,7 +43,7 @@ class NavBar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const AjustesPage()),
+                MaterialPageRoute(builder: (context) => const ConfigScreen()),
               );
             },
           ),
@@ -54,7 +54,7 @@ class NavBar extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const AyudaSoportePage()),
+                    builder: (context) => const SuportAndHelpScreen()),
               );
             },
           ),
@@ -64,7 +64,7 @@ class NavBar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const AcercaDePage()),
+                MaterialPageRoute(builder: (context) => const AboutScreen()),
               );
             },
           ),

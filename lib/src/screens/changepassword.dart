@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SuportAndHelpScreen extends StatefulWidget {
-  const SuportAndHelpScreen({super.key});
+class ChangePasswordScreen extends StatefulWidget {
+  const ChangePasswordScreen({super.key});
 
   @override
-  _SuportAndHelpScreenState createState() => _SuportAndHelpScreenState();
+  _ChangePasswordScreenState createState() => _ChangePasswordScreenState();
 }
 
-class _SuportAndHelpScreenState extends State<SuportAndHelpScreen> {
+class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -61,7 +61,7 @@ class _SuportAndHelpScreenState extends State<SuportAndHelpScreen> {
                             gradient: LinearGradient(
                               begin: Alignment(0.00, -1.00),
                               end: Alignment(0, 1),
-                              colors: [Color(0xFF9197D4), Color(0xFF6D729F)],
+                              colors: [Color(0xFF9197D4), Color(0xFF707392)],
                             ),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.only(
@@ -76,7 +76,7 @@ class _SuportAndHelpScreenState extends State<SuportAndHelpScreen> {
                         left: size.width * 0.35,
                         top: size.height * 0.05,
                         child:const Icon(
-                          Icons.help_outline,
+                          Icons.lock,
                           size: 60,
                           color: Colors.white,
                         ),
@@ -85,11 +85,11 @@ class _SuportAndHelpScreenState extends State<SuportAndHelpScreen> {
                         left: size.width * 0.25,
                         top: size.height * 0.12,
                         child:const Text(
-                          'Ayuda y FAQs',
+                          'CAMBIO DE \nCONTRASEÑA',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 25,
+                            fontSize: 22,
                             fontFamily: 'Roboto Serif',
                             fontWeight: FontWeight.w700,
                             height: 0,
@@ -98,13 +98,13 @@ class _SuportAndHelpScreenState extends State<SuportAndHelpScreen> {
                       ),
                       Positioned(
                         left: size.width * 0.1,
-                        top: size.height * 0.25,
+                        top: size.height * 0.3,
                         child:const Text(
-                          'Nombre',
+                          'NUEVA CONTRASEÑA',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 18,
+                            fontSize: 16,
                             fontFamily: 'Roboto Serif',
                             fontWeight: FontWeight.w400,
                             height: 0,
@@ -113,8 +113,9 @@ class _SuportAndHelpScreenState extends State<SuportAndHelpScreen> {
                       ),
                       Positioned(
                         left: size.width * 0.1,
-                        top: size.height * 0.3,
-                        child: SizedBox(
+                        top: size.height * 0.35,
+                        child: 
+                        SizedBox(
                           width: size.width * 0.7,
                           child: TextField(
                             style:const TextStyle(color: Colors.black),
@@ -125,50 +126,18 @@ class _SuportAndHelpScreenState extends State<SuportAndHelpScreen> {
                               filled: true,
                               fillColor:const Color(0xFFF2F1F1),
                             ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: size.width * 0.1,
-                        top: size.height * 0.4,
-                        child:const Text(
-                          'Correo',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontFamily: 'Roboto Serif',
-                            fontWeight: FontWeight.w400,
-                            height: 0,
                           ),
                         ),
                       ),
                       Positioned(
                         left: size.width * 0.1,
                         top: size.height * 0.45,
-                        child: SizedBox(
-                          width: size.width * 0.7,
-                          child: TextField(
-                            style:const TextStyle(color: Colors.black),
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              filled: true,
-                              fillColor:const Color(0xFFF2F1F1),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: size.width * 0.1,
-                        top: size.height * 0.55,
                         child:const Text(
-                          'Descripción del problema',
+                          'CONFIRMAR CONTRASEÑA',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 18,
+                            fontSize: 16,
                             fontFamily: 'Roboto Serif',
                             fontWeight: FontWeight.w400,
                             height: 0,
@@ -177,28 +146,27 @@ class _SuportAndHelpScreenState extends State<SuportAndHelpScreen> {
                       ),
                       Positioned(
                         left: size.width * 0.1,
-                        top: size.height * 0.6,
+                        top: size.height * 0.5,
                         child: SizedBox(
                           width: size.width * 0.7,
                           child: TextField(
-                            maxLines: 5,
-                            style:const TextStyle(color: Colors.black),
+                            style: const TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               filled: true,
-                              fillColor:const Color(0xFFF2F1F1),
+                              fillColor: const Color(0xFFF2F1F1),
                             ),
                           ),
                         ),
                       ),
                       Positioned(
                         left: size.width * 0.25,
-                        top: size.height * 0.8,
+                        top: size.height * 0.7,
                         child: GestureDetector(
                           onTap: () {
-                            // Acción para enviar el formulario
+                            // Acción para guardar la nueva contraseña
                           },
                           child: Container(
                             width: size.width * 0.4,
@@ -207,7 +175,7 @@ class _SuportAndHelpScreenState extends State<SuportAndHelpScreen> {
                               gradient:const LinearGradient(
                                 begin: Alignment(1.00, 0.00),
                                 end: Alignment(-1, 0),
-                                colors: [Color(0xFF9198D4), Color(0xFFA0A4C9)],
+                                colors: [Color(0xFF9198D4), Color(0xFFBCBECC)],
                               ),
                               shape: RoundedRectangleBorder(
                                 side:const BorderSide(width: 1),
@@ -216,11 +184,11 @@ class _SuportAndHelpScreenState extends State<SuportAndHelpScreen> {
                             ),
                             child:const Center(
                               child: Text(
-                                'ENVIAR',
+                                'GUARDAR',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 16,
+                                  fontSize: 15,
                                   fontFamily: 'Roboto Serif',
                                   fontWeight: FontWeight.w700,
                                   height: 0,
