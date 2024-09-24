@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_carnet_digital/src/widgets/circulos_decorations.dart';
+import 'package:proyecto_carnet_digital/src/widget/circulos_decorations.dart';
 // Importamos los círculos
 
 class RecuperarContrasenaScreen extends StatelessWidget {

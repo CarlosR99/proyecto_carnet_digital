@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AcercaDePage extends StatelessWidget {
+  const AcercaDePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Acerca de'),
+        title: const Text('Acerca de'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('Página Acerca de'),
       ),
     );

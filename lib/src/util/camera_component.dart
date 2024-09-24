@@ -14,19 +14,16 @@ class CameraComponentState extends State<CameraComponent> {
   CameraController? _cameraController;
   List<CameraDescription>? _cameras;
   bool _isDetecting = false;
+  bool _closePhotoTaken = false;
+  bool _farPhotoTaken = false;
 
-  // Cambiado para usar FaceDetector directamente
   final faceDetector = FaceDetector(
     options: FaceDetectorOptions(
-      performanceMode: FaceDetectorMode
-          .fast, // Modo rápido para mejorar la detección en tiempo real
-      enableContours: false, // Activar si necesitas contornos faciales
-      enableClassification:
-          true, // Activar si necesitas detección de sonrisas u ojos abiertos
+      performanceMode: FaceDetectorMode.fast,
+      enableContours: false,
+      enableClassification: true,
     ),
   );
-
-  bool _faceInPosition = false;
 
   @override
   void initState() {
@@ -56,13 +53,12 @@ class CameraComponentState extends State<CameraComponent> {
 
   Future<void> _processCameraImage(CameraImage image) async {
     // Convertir CameraImage a InputImage que pueda procesar ML Kit
-    final WriteBuffer allBytes = WriteBuffer();
+    final allBytes = WriteBuffer();
     for (var plane in image.planes) {
       allBytes.putUint8List(plane.bytes);
     }
     final bytes = allBytes.done().buffer.asUint8List();
 
-    // Ajuste de la rotación y formato
     final InputImageMetadata metadata = InputImageMetadata(
       size: Size(image.width.toDouble(), image.height.toDouble()),
       rotation: InputImageRotation
@@ -80,26 +76,41 @@ class CameraComponentState extends State<CameraComponent> {
 
     if (faces.isNotEmpty) {
       Face face = faces[0];
-      // Determina si la cara está en la posición correcta
-      if (face.boundingBox.width > 150 && face.boundingBox.width < 200) {
-        if (!_faceInPosition) {
-          _faceInPosition = true;
-          await _takePicture();
-        }
-      } else {
-        _faceInPosition = false;
+
+      // Verificar si la cara está cerca (mayor ancho del bounding box)
+      if (face.boundingBox.width > 180 && !_closePhotoTaken) {
+        _closePhotoTaken = true;
+        await _takePicture('Cerca');
+      }
+      // Verificar si la cara está lejos (menor ancho del bounding box)
+      else if (face.boundingBox.width < 150 &&
+          _closePhotoTaken &&
+          !_farPhotoTaken) {
+        _farPhotoTaken = true;
+        await _takePicture('Lejos');
+        _navigateToNextScreen(); // Navegar a la siguiente interfaz después de ambas fotos
       }
     }
   }
 
-  Future<void> _takePicture() async {
+  Future<void> _takePicture(String distance) async {
     try {
       final imagePath = await _cameraController!.takePicture();
-      print('Foto tomada: ${imagePath.path}');
+      if (kDebugMode) {
+        print('Foto tomada ($distance): ${imagePath.path}');
+      }
       // Aquí puedes manejar la imagen tomada
     } catch (e) {
-      print('Error al tomar foto: $e');
+      if (kDebugMode) {
+        print('Error al tomar foto: $e');
+      }
     }
+  }
+
+  void _navigateToNextScreen() {
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (context) => const NextScreen()),
+    );
   }
 
   @override
@@ -113,15 +124,8 @@ class CameraComponentState extends State<CameraComponent> {
       children: [
         ClipOval(
           child: AspectRatio(
-            aspectRatio: 1,
+            aspectRatio: 6.0 / 9.0,
             child: CameraPreview(_cameraController!),
-          ),
-        ),
-        Positioned(
-          child: Icon(
-            Icons.person_outline,
-            size: 150,
-            color: Colors.blue.withOpacity(0.6),
           ),
         ),
       ],
@@ -133,5 +137,17 @@ class CameraComponentState extends State<CameraComponent> {
     _cameraController?.dispose();
     faceDetector.close();
     super.dispose();
+  }
+}
+
+class NextScreen extends StatelessWidget {
+  const NextScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Siguiente Pantalla")),
+      body: const Center(child: Text("Fotos tomadas con éxito.")),
+    );
   }
 }

@@ -18,6 +18,12 @@ class MyApp extends StatelessWidget {
         '/Home': (_) => const WelcomeScreen(),
         '/login': (_) => const LoginPage(),
         '/recuperar': (_) => const RecuperarContrasenaScreen(),
+        '/carnet': (_) => const DigitalLicenseScreen(),
+        '/verificacion': (_) => const FaceVerificationView(),
+        '/config': (_) => const AjustesPage(),
+        '/info': (_) => const AcercaDePage(),
+        '/help': (_) => const AyudaSoportePage(),
+        '/navbar': (_) => const NavBar(),
       },
     );
   }

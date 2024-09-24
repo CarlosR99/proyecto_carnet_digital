@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto_carnet_digital/src/util/finger_print.dart';
+import 'package:proyecto_carnet_digital/src/util/login_service.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
+
+  @override
+  LoginFormState createState() => LoginFormState();
+}
+
+class LoginFormState extends State<LoginForm> {
+  final LoginService loginService = LoginService();
+  final FingerprintService fingerprintService = FingerprintService();
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +38,11 @@ class LoginForm extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
             border: Border.all(color: Colors.black),
           ),
-          child: const Column(
+          child: Column(
             children: [
               TextField(
-                decoration: InputDecoration(
+                controller: loginService.usernameController,
+                decoration: const InputDecoration(
                   labelText: 'Usuario',
                   labelStyle: TextStyle(fontWeight: FontWeight.bold),
                   prefixIcon: Icon(Icons.person),
@@ -50,11 +60,12 @@ class LoginForm extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
             border: Border.all(color: Colors.black),
           ),
-          child: const Column(
+          child: Column(
             children: [
               TextField(
+                controller: loginService.passwordController,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Contraseña',
                   labelStyle: TextStyle(fontWeight: FontWeight.bold),
                   prefixIcon: Icon(Icons.lock),
@@ -86,6 +97,7 @@ class LoginForm extends StatelessWidget {
             // Botón Ingresar
             ElevatedButton(
               onPressed: () {
+                loginService.login(context);
                 // Lógica de inicio de sesión
               },
               style: ElevatedButton.styleFrom(
@@ -109,7 +121,7 @@ class LoginForm extends StatelessWidget {
             const SizedBox(width: 20),
             ElevatedButton.icon(
               onPressed: () {
-                FingerprintService().authenticate(context);
+                fingerprintService.authenticate(context);
               },
               icon: const Icon(Icons.fingerprint),
               label: const Text('Huella',
