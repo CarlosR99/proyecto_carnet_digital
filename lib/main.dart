@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
         '/recuperar': (_) => const RecuperarContrasenaScreen(),
         '/carnet': (_) => const DigitalLicenseScreen(),
         '/verificacion': (_) => const FaceVerificationView(),
-        '/config': (_) => const AjustesPage(),
-        '/info': (_) => const AcercaDePage(),
-        '/help': (_) => const AyudaSoportePage(),
+        '/config': (_) => const ConfigScreen(),
+        '/info': (_) => const AboutScreen(),
+        '/help': (_) => const SuportAndHelpScreen(),
         '/navbar': (_) => const NavBar(),
       },
     );
