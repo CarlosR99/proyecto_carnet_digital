@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../components/camera_component.dart';
+import 'package:proyecto_carnet_digital/src/widget/circles_widget.dart';
+import '../util/camera_component.dart';
 
 class FaceVerificationView extends StatelessWidget {
   const FaceVerificationView({super.key});
@@ -8,19 +9,14 @@ class FaceVerificationView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
+        alignment: Alignment.center,
         children: [
+          Circles(), // Llamada al widget de los círculos decorativos
           Expanded(
             flex: 3,
             child: CameraComponent(), // Componente de la cámara
           ),
-          SizedBox(height: 20),
-          Text(
-            'Por favor, ajusta tu cara',
-            style: TextStyle(fontSize: 18, color: Colors.blue),
-          ),
-          SizedBox(height: 30),
         ],
       ),
     );
