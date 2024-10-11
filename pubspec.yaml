@@ -30,6 +30,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+ # La dependencia http se agrega aquí
+  http: ^0.13.0
+
   camera: ^0.11.0+2
   external_path: ^2.0.1
   media_scanner: ^2.1.0
