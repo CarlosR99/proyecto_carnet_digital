@@ -1,0 +1,10 @@
+export 'package:proyecto_carnet_digital/src/screens/front_page.dart';
+export 'package:proyecto_carnet_digital/src/screens/login_page_screen.dart';
+export 'package:proyecto_carnet_digital/src/screens/recuperar_contra_screen.dart';
+export 'package:proyecto_carnet_digital/src/screens/digital_license_screen.dart';
+export 'package:proyecto_carnet_digital/src/screens/config.dart';
+export 'package:proyecto_carnet_digital/src/screens/home.dart';
+export 'package:proyecto_carnet_digital/src/screens/info.dart';
+export 'package:proyecto_carnet_digital/src/screens/help.dart';
+export 'package:proyecto_carnet_digital/src/screens/face_verification_view.dart';
+export 'package:proyecto_carnet_digital/src/util/navbar.dart';
